@@ -4,14 +4,10 @@ import { getPrice } from '@common/get-price';
 import { getLiquidationPrice, getCollateralToDebtRatio } from '@common/vault-utils';
 import { InputAmount } from './input-amount';
 import { useLocation } from 'react-router-dom';
-import {
-  QuestionMarkCircleIcon,
-  InformationCircleIcon,
-  ExternalLinkIcon,
-} from '@heroicons/react/solid';
 import { Placeholder } from './ui/placeholder';
 import { Tooltip } from '@blockstack/ui';
 import { Alert } from './ui/alert';
+import { StyledIcon } from './ui/styled-icon';
 
 interface VaultProps {
   setStep: (arg: number) => void;
@@ -162,7 +158,7 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
           <div>
             <div className="flex items-center">
               <div className="w-5.5 h-5.5 rounded-full bg-indigo-200 flex items-center justify-center">
-                <QuestionMarkCircleIcon className="w-5 h-5 text-indigo-600" aria-hidden="true" />
+                <StyledIcon as="QuestionMarkCircleIcon" size={5} className="text-indigo-600" />
               </div>
               <a
                 className="inline-flex items-center px-2 text-sm font-medium text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200 hover:text-indigo-700"
@@ -171,7 +167,7 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
                 rel="noopener noreferrer"
               >
                 Need help with vaults?
-                <ExternalLinkIcon className="block w-3 h-3 ml-2 shrink-0" aria-hidden="true" />
+                <StyledIcon as="ExternalLinkIcon" size={3} className="block ml-2" />
               </a>
             </div>
           </div>
@@ -193,15 +189,27 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
                     {isLoading ? (
                       <div className="space-y-16 sm:col-span-3">
                         <div>
-                          <Placeholder className="py-2" color={Placeholder.color.GRAY} width={Placeholder.width.FULL} />
+                          <Placeholder
+                            className="py-2"
+                            color={Placeholder.color.GRAY}
+                            width={Placeholder.width.FULL}
+                          />
                           <Placeholder className="py-2" width={Placeholder.width.THIRD} />
                         </div>
                         <div>
-                          <Placeholder className="py-2" color={Placeholder.color.GRAY} width={Placeholder.width.FULL} />
+                          <Placeholder
+                            className="py-2"
+                            color={Placeholder.color.GRAY}
+                            width={Placeholder.width.FULL}
+                          />
                           <Placeholder className="py-2" width={Placeholder.width.THIRD} />
                         </div>
                         <div>
-                          <Placeholder className="py-2" color={Placeholder.color.GRAY} width={Placeholder.width.FULL} />
+                          <Placeholder
+                            className="py-2"
+                            color={Placeholder.color.GRAY}
+                            width={Placeholder.width.FULL}
+                          />
                           <Placeholder className="py-2" width={Placeholder.width.THIRD} />
                         </div>
                       </div>
@@ -263,9 +271,10 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
                                   shouldWrapChildren={true}
                                   label={`The amount of collateral you deposit in a vault versus the stablecoin debt you are minting against it`}
                                 >
-                                  <InformationCircleIcon
-                                    className="block w-5 h-5 text-indigo-400"
-                                    aria-hidden="true"
+                                  <StyledIcon
+                                    as="InformationCircleIcon"
+                                    size={5}
+                                    className="block text-indigo-400"
                                   />
                                 </Tooltip>
                               </div>
@@ -283,9 +292,10 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
                                   shouldWrapChildren={true}
                                   label={`The price at which the vault gets tagged for auction`}
                                 >
-                                  <InformationCircleIcon
-                                    className="block w-5 h-5 text-indigo-400"
-                                    aria-hidden="true"
+                                  <StyledIcon
+                                    as="InformationCircleIcon"
+                                    size={5}
+                                    className="block text-indigo-400"
                                   />
                                 </Tooltip>
                               </div>
@@ -312,9 +322,10 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
                                   shouldWrapChildren={true}
                                   label={`The interest in percentage to borrow USDA`}
                                 >
-                                  <InformationCircleIcon
-                                    className="block w-5 h-5 text-indigo-400"
-                                    aria-hidden="true"
+                                  <StyledIcon
+                                    as="InformationCircleIcon"
+                                    size={5}
+                                    className="block text-indigo-400"
                                   />
                                 </Tooltip>
                               </div>
@@ -332,9 +343,10 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
                                   shouldWrapChildren={true}
                                   label={`The collateral-to-debt ratio when your vault gets liquidated`}
                                 >
-                                  <InformationCircleIcon
-                                    className="block w-5 h-5 text-indigo-400"
-                                    aria-hidden="true"
+                                  <StyledIcon
+                                    as="InformationCircleIcon"
+                                    size={5}
+                                    className="block text-indigo-400"
                                   />
                                 </Tooltip>
                               </div>
@@ -352,9 +364,10 @@ export const CreateVaultStepOne: React.FC<VaultProps> = ({ setStep, setCoinAmoun
                                   shouldWrapChildren={true}
                                   label={`The penalty you pay when your vault gets liquidated`}
                                 >
-                                  <InformationCircleIcon
-                                    className="block w-5 h-5 text-indigo-400"
-                                    aria-hidden="true"
+                                  <StyledIcon
+                                    as="InformationCircleIcon"
+                                    size={5}
+                                    className="block text-indigo-400"
                                   />
                                 </Tooltip>
                               </div>

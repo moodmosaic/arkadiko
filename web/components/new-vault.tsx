@@ -24,7 +24,7 @@ export const NewVault = () => {
       <Helmet>
         <title>Create vault</title>
       </Helmet>
-    
+
       <Container>
         <main className="py-12">
           {step === 0 ? (

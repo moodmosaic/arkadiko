@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import { AppContext } from '@common/context';
-import { QuestionMarkCircleIcon, ExternalLinkIcon } from '@heroicons/react/solid';
 import { useLocation } from 'react-router-dom';
 import { Alert } from './ui/alert';
+import { StyledIcon } from './ui/styled-icon';
 
 export const CreateVaultConfirm = ({ setStep, coinAmounts, setCoinAmounts }) => {
   const [state] = useContext(AppContext);
@@ -59,7 +59,7 @@ export const CreateVaultConfirm = ({ setStep, coinAmounts, setCoinAmounts }) => 
           <div>
             <div className="flex items-center">
               <div className="w-5.5 h-5.5 rounded-full bg-indigo-200 flex items-center justify-center">
-                <QuestionMarkCircleIcon className="w-5 h-5 text-indigo-600" aria-hidden="true" />
+                <StyledIcon as="QuestionMarkCircleIcon" size={5} className="text-indigo-600" />
               </div>
               <a
                 className="inline-flex items-center px-2 text-sm font-medium text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200 hover:text-indigo-700"
@@ -68,7 +68,7 @@ export const CreateVaultConfirm = ({ setStep, coinAmounts, setCoinAmounts }) => 
                 rel="noopener noreferrer"
               >
                 More on vaults parameters
-                <ExternalLinkIcon className="block w-3 h-3 ml-2" aria-hidden="true" />
+                <StyledIcon as="ExternalLinkIcon" size={3} className="block ml-2" />
               </a>
             </div>
           </div>

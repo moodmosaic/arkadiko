@@ -18,9 +18,9 @@ import { VaultProps } from './vault';
 import { EmptyState } from './ui/empty-state';
 import { ArchiveIcon } from '@heroicons/react/outline';
 import { Placeholder } from './ui/placeholder';
-import { InformationCircleIcon } from '@heroicons/react/solid';
 import { Tooltip } from '@blockstack/ui';
 import { Prices } from './prices';
+import { StyledIcon } from './ui/styled-icon';
 
 export const Mint = () => {
   const address = useSTXAddress();
@@ -215,9 +215,10 @@ export const Mint = () => {
                     shouldWrapChildren={true}
                     label={`DIKO vaults rewards ended at block 41348. Don't worry, you can still stake and farm DIKO with LP tokens.`}
                   >
-                    <InformationCircleIcon
-                      className="w-5 h-5 ml-2 text-gray-400"
-                      aria-hidden="true"
+                    <StyledIcon
+                      as="InformationCircleIcon"
+                      size={5}
+                      className="ml-2 text-gray-400"
                     />
                   </Tooltip>
                 </p>

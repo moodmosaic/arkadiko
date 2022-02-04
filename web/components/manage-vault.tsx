@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Tooltip } from '@blockstack/ui';
-import { InformationCircleIcon } from '@heroicons/react/solid';
 import { Container } from './home';
 import { VaultDepositModal } from '@components/vault-deposit-modal';
 import { VaultWithdrawModal } from '@components/vault-withdraw-modal';
@@ -30,6 +29,7 @@ import { microToReadable, availableCollateralToWithdraw } from '@common/vault-ut
 import { addMinutes } from 'date-fns';
 import { Placeholder } from './ui/placeholder';
 import { Alert } from './ui/alert';
+import { StyledIcon } from './ui/styled-icon';
 
 export const ManageVault = ({ match }) => {
   const { doContractCall } = useConnect();
@@ -591,7 +591,9 @@ export const ManageVault = ({ match }) => {
                               </Tooltip>
                             ) : null}
                           </div>
-                          <p className="mt-1 text-sm text-gray-500 dark:text-zinc-400">Update your stacking status.</p>
+                          <p className="mt-1 text-sm text-gray-500 dark:text-zinc-400">
+                            Update your stacking status.
+                          </p>
                         </div>
                         <div>
                           {canStackCollateral &&
@@ -623,7 +625,10 @@ export const ManageVault = ({ match }) => {
                                 Restack
                               </button>
                             ) : null
-                          ) : canStackCollateral && vault?.stackedTokens == 0 && isVaultOwner && !loadingVaultData ? (
+                          ) : canStackCollateral &&
+                            vault?.stackedTokens == 0 &&
+                            isVaultOwner &&
+                            !loadingVaultData ? (
                             // user is not stacking
                             isVaultOwner ? (
                               <button
@@ -684,9 +689,9 @@ export const ManageVault = ({ match }) => {
                           <dd className="mt-1 text-sm text-right text-gray-900 dark:text-zinc-100 sm:mt-0">
                             <p className="text-lg font-semibold leading-none">
                               {enabledStacking ? (
-                                <span>{microToReadable(vault?.collateral)}{' '}</span>
+                                <span>{microToReadable(vault?.collateral)} </span>
                               ) : (
-                                <span>0{' '}</span>
+                                <span>0 </span>
                               )}
                               <span className="text-sm font-normal">
                                 {vault?.collateralToken.toUpperCase()}
@@ -705,9 +710,10 @@ export const ManageVault = ({ match }) => {
                                   shouldWrapChildren={true}
                                   label={`The yield on your vault is given when stacking ends. If you opt-out of stacking, you can withdraw your funds when stacking ends.`}
                                 >
-                                  <InformationCircleIcon
-                                    className="block w-5 h-5 ml-2 text-gray-400"
-                                    aria-hidden="true"
+                                  <StyledIcon
+                                    as="InformationCircleIcon"
+                                    size={5}
+                                    className="block ml-2 text-gray-400"
                                   />
                                 </Tooltip>
                               </dt>
@@ -875,8 +881,8 @@ export const ManageVault = ({ match }) => {
                           {startedStacking ? (
                             <p>
                               You cannot withdraw your collateral since it is stacked until Bitcoin
-                              block {unlockBurnHeight}. After this block gets mined, you will need to
-                              manually unlock your vault to get access to your collateral.
+                              block {unlockBurnHeight}. After this block gets mined, you will need
+                              to manually unlock your vault to get access to your collateral.
                             </p>
                           ) : (
                             <p>
@@ -894,7 +900,9 @@ export const ManageVault = ({ match }) => {
                       <div className="mt-4">
                         <Alert>
                           <p>
-                            You have unstacked your collateral. It is still stacking in PoX until Bitcoin block {unlockBurnHeight}. Once your cooldown cycle hits, you can unlock the collateral.
+                            You have unstacked your collateral. It is still stacking in PoX until
+                            Bitcoin block {unlockBurnHeight}. Once your cooldown cycle hits, you can
+                            unlock the collateral.
                           </p>
                         </Alert>
                       </div>
@@ -949,9 +957,10 @@ export const ManageVault = ({ match }) => {
                               shouldWrapChildren={true}
                               label={`When the price of ${vault?.collateralToken.toUpperCase()} increases compared to when you created a vault, your collateral is bigger in dollar value so you can mint more.`}
                             >
-                              <InformationCircleIcon
-                                className="block w-5 h-5 ml-2 text-gray-400"
-                                aria-hidden="true"
+                              <StyledIcon
+                                as="InformationCircleIcon"
+                                size={5}
+                                className="block ml-2 text-gray-400"
                               />
                             </Tooltip>
                           </p>
@@ -1003,14 +1012,19 @@ export const ManageVault = ({ match }) => {
                                   collateralType?.stabilityFeeApy / 100
                                 }% yearly stability fee.`}
                               >
-                                <InformationCircleIcon
-                                  className="block w-5 h-5 ml-2 text-gray-400"
-                                  aria-hidden="true"
+                                <StyledIcon
+                                  as="InformationCircleIcon"
+                                  size={5}
+                                  className="block ml-2 text-gray-400"
                                 />
                               </Tooltip>
                             </p>
                           </div>
-                          {!loadingStackerData && isVaultOwner && canWithdrawCollateral && Number(vault?.stackedTokens) === 0 && Number(totalDebt) <= 0.6 ? (
+                          {!loadingStackerData &&
+                          isVaultOwner &&
+                          canWithdrawCollateral &&
+                          Number(vault?.stackedTokens) === 0 &&
+                          Number(totalDebt) <= 0.6 ? (
                             <button
                               type="button"
                               className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-indigo-700 bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
@@ -1047,9 +1061,10 @@ export const ManageVault = ({ match }) => {
                               shouldWrapChildren={true}
                               label={`The amount of collateral you deposit in a vault versus the stablecoin debt you are minting against it`}
                             >
-                              <InformationCircleIcon
-                                className="block w-5 h-5 ml-2 text-gray-400"
-                                aria-hidden="true"
+                              <StyledIcon
+                                as="InformationCircleIcon"
+                                size={5}
+                                className="block ml-2 text-gray-400"
                               />
                             </Tooltip>
                           </dt>
@@ -1083,9 +1098,10 @@ export const ManageVault = ({ match }) => {
                               shouldWrapChildren={true}
                               label={`The collateral-to-debt ratio when your vault gets liquidated`}
                             >
-                              <InformationCircleIcon
-                                className="block w-5 h-5 ml-2 text-gray-400"
-                                aria-hidden="true"
+                              <StyledIcon
+                                as="InformationCircleIcon"
+                                size={5}
+                                className="block ml-2 text-gray-400"
                               />
                             </Tooltip>
                           </dt>
@@ -1114,9 +1130,10 @@ export const ManageVault = ({ match }) => {
                               shouldWrapChildren={true}
                               label={`The penalty you pay when your vault gets liquidated`}
                             >
-                              <InformationCircleIcon
-                                className="block w-5 h-5 ml-2 text-gray-400"
-                                aria-hidden="true"
+                              <StyledIcon
+                                as="InformationCircleIcon"
+                                size={5}
+                                className="block ml-2 text-gray-400"
                               />
                             </Tooltip>
                           </dt>
